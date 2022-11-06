@@ -35,7 +35,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Canvas shadows>
       <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 5, 5]} castShadow />
+      <directionalLight position={[5, 5, 5]} intensity={2} castShadow />
       <OrbitControls makeDefault />
       <Box />
       <Plane />
