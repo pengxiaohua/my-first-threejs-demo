@@ -7,8 +7,12 @@ import { useSpring, animated, config } from "@react-spring/three";
 
 import './index.css'
 
+interface IBox {
+  position: [x: number, y: number, x: number]
+}
+
 // 定义一个立方体
-const Box = () => {
+const Box = ({ position }: IBox) => {
   const myMesh = useRef();
 
   const [active, setActive] = useState(false)
@@ -25,6 +29,7 @@ const Box = () => {
 
   return (
     <animated.mesh
+      position={position}
       scale={scale}
       castShadow
       onClick={() => setActive(!active)}
@@ -34,7 +39,6 @@ const Box = () => {
     </animated.mesh>
   )
 }
-
 
 // 定义欧拉角，描述在三维坐标系的方向
 const euler = new THREE.Euler(-Math.PI / 2, 0, 0)
@@ -54,22 +58,14 @@ const Plane = () => (
   </mesh>
 )
 
-const All = () => {
-  return (
-    <mesh>
-      <Box />
-      <Plane />
-    </mesh>
-  )
-}
-
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Canvas shadows>
       <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 5, 5]} intensity={2} castShadow />
+      <directionalLight position={[10, 5, 5]} intensity={2} castShadow />
       <OrbitControls makeDefault />
-      <Box />
+      <Box position={[-1, 0, 2]} />
+      <Box position={[2, 0, 2]} />
       <Plane />
     </Canvas>
   </React.StrictMode>
