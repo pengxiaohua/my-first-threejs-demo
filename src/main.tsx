@@ -1,8 +1,8 @@
-import React, {useRef, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import ReactDOM from 'react-dom/client'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { act, Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, useAnimations, useGLTF } from '@react-three/drei'
 import { useSpring, animated, config } from "@react-spring/three";
 
 import './index.css'
@@ -58,6 +58,23 @@ const Plane = () => (
   </mesh>
 )
 
+const Model = () => {
+  const robotRef = useRef<THREE.Group>(null)
+  const { scene, animations } = useGLTF('/public/robot/scene.gltf')
+
+  const { actions, names } = useAnimations(animations, robotRef)
+
+  useEffect(() => {
+    actions[names[0]]?.play()
+  }, [])
+  
+  return (
+    <group>
+      <primitive object={scene} ref={robotRef} />
+    </group>
+  )
+}
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Canvas shadows>
@@ -67,6 +84,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <Box position={[-1, 0, 2]} />
       <Box position={[2, 0, 2]} />
       <Plane />
+      <Model />
     </Canvas>
   </React.StrictMode>
 )
