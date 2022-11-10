@@ -58,6 +58,7 @@ const Plane = () => (
   </mesh>
 )
 
+// 机器人模型
 const Model = () => {
   const robotRef = useRef<THREE.Group>(null)
   const { scene, animations } = useGLTF('/public/robot/scene.gltf')
