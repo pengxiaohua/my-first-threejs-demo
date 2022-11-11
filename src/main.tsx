@@ -1,8 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, { useEffect, useRef, useState, Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import { act, Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
-import { OrbitControls, useAnimations, useGLTF } from '@react-three/drei'
+import { OrbitControls, useAnimations, useGLTF, Loader } from '@react-three/drei'
 import { useSpring, animated, config } from "@react-spring/three";
 
 import './index.css'
@@ -85,7 +85,10 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <Box position={[-1, 0, 2]} />
       <Box position={[2, 0, 2]} />
       <Plane />
-      <Model />
+      <Suspense fallback={null}>
+        <Model />
+      </Suspense>
     </Canvas>
+    <Loader />
   </React.StrictMode>
 )
