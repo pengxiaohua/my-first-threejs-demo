@@ -61,8 +61,9 @@ const Plane = () => (
 // 机器人模型
 const Model = () => {
   const robotRef = useRef<THREE.Group>(null)
+  // 加载模型
   const { scene, animations } = useGLTF('/public/robot/scene.gltf')
-
+  // 播放模型动画
   const { actions, names } = useAnimations(animations, robotRef)
 
   useEffect(() => {
@@ -85,10 +86,12 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <Box position={[-1, 0, 2]} />
       <Box position={[2, 0, 2]} />
       <Plane />
+      // 使用Suspense
       <Suspense fallback={null}>
         <Model />
       </Suspense>
     </Canvas>
+    {/* 初始化进度条 */}
     <Loader />
   </React.StrictMode>
 )
