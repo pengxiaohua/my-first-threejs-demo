@@ -86,7 +86,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <Box position={[-1, 0, 2]} />
       <Box position={[2, 0, 2]} />
       <Plane />
-      // 使用Suspense
+      {/* 使用Suspense */}
       <Suspense fallback={null}>
         <Model />
       </Suspense>
