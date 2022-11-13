@@ -1,43 +1,14 @@
-import React, { useEffect, useRef, useState, Suspense } from 'react'
+import React, { useEffect, useRef, Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
-import { act, Canvas, useFrame } from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import * as THREE from 'three'
 import { OrbitControls, useAnimations, useGLTF, Loader } from '@react-three/drei'
-import { useSpring, animated, config } from "@react-spring/three";
 
+import Box from './Box'
 import './index.css'
 
 interface IBox {
   position: [x: number, y: number, x: number]
-}
-
-// 定义一个立方体
-const Box = ({ position }: IBox) => {
-  const myMesh = useRef();
-
-  const [active, setActive] = useState(false)
-
-  const { scale } = useSpring({
-    scale: active ? 1.5 : 1,
-    config: config.wobbly,
-  })
-
-  useFrame(({ clock }) => {
-    const a = clock.getElapsedTime();
-    myMesh.current.rotation.y = a;
-  });
-
-  return (
-    <animated.mesh
-      position={position}
-      scale={scale}
-      castShadow
-      onClick={() => setActive(!active)}
-      ref={myMesh}>
-      <boxGeometry />
-      <meshStandardMaterial color={0xff0000} />
-    </animated.mesh>
-  )
 }
 
 // 定义欧拉角，描述在三维坐标系的方向
