@@ -1,41 +1,43 @@
-import React, { useRef, useState } from "react";
-import ReactDOM from "react-dom/client";
-import { act, Canvas, useFrame } from "@react-three/fiber";
-import * as THREE from "three";
-import {
-  OrbitControls,
-  useAnimations,
-  useGLTF,
-  Loader,
-} from "@react-three/drei";
+import { useRef, useState } from "react";
+import { useFrame } from "@react-three/fiber";
+import { useBox } from '@react-three/cannon'
 import { useSpring, animated, config } from "@react-spring/three";
 
+interface IBox {
+    position: [x: number, y: number, x: number]
+}
+
 const Box = ({ position }: IBox) => {
-  const myMesh = useRef();
 
-  const [active, setActive] = useState(false);
+    const [active, setActive] = useState(false);
 
-  const { scale } = useSpring({
-    scale: active ? 1.5 : 1,
-    config: config.wobbly,
-  });
+    const { scale } = useSpring({
+        scale: active ? 1.5 : 1,
+        config: config.wobbly,
+    });
 
-  useFrame(({ clock }) => {
-    const a = clock.getElapsedTime();
-    myMesh.current.rotation.y = a;
-  });
+    useFrame(({ clock }) => {
+        const a = clock.getElapsedTime();
+        boxRef.current && (boxRef.current.rotation.y = a)
+    });
 
-  return (
-    <animated.mesh
-      position={position}
-      scale={scale}
-      castShadow
-      onClick={() => setActive(!active)}
-      ref={myMesh}>
-      <boxGeometry />
-      <meshStandardMaterial color={0xff0000} />
-    </animated.mesh>
-  );
+    const [boxRef] = useBox<THREE.Mesh>(() => ({
+        position,
+        // 重力效果为1
+        mass: 1
+    }))
+
+    return (
+        <animated.mesh
+            position={position}
+            scale={scale}
+            castShadow
+            onClick={() => setActive(!active)}
+            ref={boxRef}>
+            <boxGeometry />
+            <meshStandardMaterial color={0xff0000} />
+        </animated.mesh>
+    );
 };
 
 export default Box;
