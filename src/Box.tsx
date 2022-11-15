@@ -16,16 +16,17 @@ const Box = ({ position }: IBox) => {
         config: config.wobbly,
     });
 
-    useFrame(({ clock }) => {
-        const a = clock.getElapsedTime();
-        boxRef.current && (boxRef.current.rotation.y = a)
-    });
-
-    const [boxRef] = useBox<THREE.Mesh>(() => ({
+    // useBox的第二个参数 api 中包含了设置物理引擎的一些方法
+    const [boxRef, api] = useBox<THREE.Mesh>(() => ({
         position,
         // 重力效果为1
         mass: 1
     }))
+
+    useFrame(() => {
+        boxRef.current &&
+            api.rotation.set(0, (boxRef.current.rotation.y += 0.01), 0)
+    });
 
     return (
         <animated.mesh
