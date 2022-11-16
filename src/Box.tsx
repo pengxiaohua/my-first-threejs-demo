@@ -20,7 +20,10 @@ const Box = ({ position }: IBox) => {
     const [boxRef, api] = useBox<THREE.Mesh>(() => ({
         position,
         // 重力效果为1
-        mass: 1
+        mass: 1,
+        material: {
+            restitution: 1
+        }
     }))
 
     useFrame(() => {
