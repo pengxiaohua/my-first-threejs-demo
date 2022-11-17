@@ -22,7 +22,7 @@ const Box = ({ position }: IBox) => {
         // 重力效果为1
         mass: 1,
         material: {
-            restitution: 1
+            restitution: 2
         }
     }))
 
