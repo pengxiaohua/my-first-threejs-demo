@@ -5,6 +5,7 @@ import * as THREE from 'three'
 import { OrbitControls, useAnimations, useGLTF, Loader } from '@react-three/drei'
 import { Physics } from '@react-three/cannon'
 
+import SkyBox from './components/SkyBox'
 import Plane from './Plane'
 import Box from './Box'
 import './index.css'
@@ -33,17 +34,18 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Canvas shadows>
       <ambientLight intensity={0.5} />
-      <directionalLight position={[10, 5, 5]} intensity={2} castShadow />
+      <SkyBox />
       <OrbitControls makeDefault />
+      {/* <directionalLight position={[10, 5, 5]} intensity={2} castShadow />
       <Physics>
         <Box position={[-1, 0, 2]} />
         <Box position={[2, 0, 2]} />
-        <Plane />
+        <Plane /> */}
         {/* 使用Suspense */}
-        <Suspense fallback={null}>
+        {/* <Suspense fallback={null}>
           <Model />
         </Suspense>
-      </Physics>
+      </Physics> */}
     </Canvas>
     {/* 初始化进度条 */}
     <Loader />
