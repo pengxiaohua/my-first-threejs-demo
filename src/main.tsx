@@ -9,6 +9,7 @@ import SkyBox from './components/SkyBox'
 import Ground from './components/Ground'
 import Plane from './Plane'
 import Box from './Box'
+import Ship from './components/Ship'
 import './index.css'
 
 
@@ -38,6 +39,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <OrbitControls makeDefault />
       <SkyBox />
       <Ground />
+      <Ship />
       {/* <directionalLight position={[10, 5, 5]} intensity={2} castShadow />
       <Physics>
         <Box position={[-1, 0, 2]} />
