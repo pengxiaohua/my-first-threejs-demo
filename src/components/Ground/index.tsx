@@ -1,8 +1,10 @@
 import * as THREE from 'three'
+import { useTexture } from '@react-three/drei'
 
 import { planeSize } from "../../constant"
 
 const Ground = () => {
+    const texture = useTexture('/')
     return (
         <>
             <mesh rotation={new THREE.Euler(-Math.PI / 2, 0, 0)}>
