@@ -36,7 +36,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Canvas shadows>
       <ambientLight intensity={0.5} />
-      <OrbitControls makeDefault />
+      {/* <OrbitControls makeDefault /> */}
       <SkyBox />
       <Ground />
       <Ship />

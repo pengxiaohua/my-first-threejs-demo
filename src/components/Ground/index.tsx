@@ -4,7 +4,11 @@ import { useTexture } from '@react-three/drei'
 
 import { planeSize, planeTextureSize } from "../../constant"
 
-const Ground = () => {
+interface IPlaneProps {
+    position: THREE.Vector3
+}
+
+const Plane = ({ position } : IPlaneProps) => {
     const texture = useTexture('/public/texture/grid-pink.png')
     useLayoutEffect(() => {
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
@@ -13,17 +17,27 @@ const Ground = () => {
     }, [texture])
 
     return (
+        <mesh
+            rotation={new THREE.Euler(-Math.PI / 2, 0, 0)}
+            position={position}
+        >
+            <planeBufferGeometry args={[planeSize, planeSize]} />
+            <meshStandardMaterial
+                emissive={0xffffff}
+                roughness={0}
+                metalness={0}
+                emissiveMap={texture}
+                map={texture}
+            />
+        </mesh>
+    )
+}
+
+const Ground = () => {
+    return (
         <>
-            <mesh rotation={new THREE.Euler(-Math.PI / 2, 0, 0)} position={[0, 0, -planeSize / 2]}>
-                <planeBufferGeometry args={[planeSize, planeSize]} />
-                <meshStandardMaterial
-                    emissive={0xffffff}
-                    roughness={0}
-                    metalness={0}
-                    emissiveMap={texture}
-                    map={texture}
-                />
-            </mesh>
+            <Plane position={new THREE.Vector3(0, 0, -planeSize / 2)} />
+            <Plane position={new THREE.Vector3(0, 0, -planeSize - planeSize / 2)} />
         </>
     )
 }
