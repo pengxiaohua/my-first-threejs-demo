@@ -14,7 +14,7 @@ const Ground = () => {
 
     return (
         <>
-            <mesh rotation={new THREE.Euler(-Math.PI / 2, 0, 0)}>
+            <mesh rotation={new THREE.Euler(-Math.PI / 2, 0, 0)} position={[0, 0, -planeSize / 2]}>
                 <planeBufferGeometry args={[planeSize, planeSize]} />
                 <meshStandardMaterial
                     emissive={0xffffff}
