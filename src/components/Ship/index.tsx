@@ -48,6 +48,7 @@ const Ship = () => {
         if (!ShipModelRef.current || !camera.current) {
             return
         }
+
         const { x, y, z } = ShipModelRef.current?.shipModel.current!.position
 
         // 设置相机位置
