@@ -3,12 +3,9 @@ import ReactDOM from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
 import * as THREE from 'three'
 import { OrbitControls, useAnimations, useGLTF, Loader } from '@react-three/drei'
-import { Physics } from '@react-three/cannon'
 
 import SkyBox from './components/SkyBox'
 import Ground from './components/Ground'
-import Plane from './Plane'
-import Box from './Box'
 import Ship from './components/Ship'
 import './index.css'
 
