@@ -40,16 +40,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <SkyBox />
       <Ground />
       <Ship />
-      {/* <directionalLight position={[10, 5, 5]} intensity={2} castShadow />
-      <Physics>
-        <Box position={[-1, 0, 2]} />
-        <Box position={[2, 0, 2]} />
-        <Plane /> */}
-        {/* 使用Suspense */}
-        {/* <Suspense fallback={null}>
-          <Model />
-        </Suspense>
-      </Physics> */}
     </Canvas>
     {/* 初始化进度条 */}
     <Loader />
