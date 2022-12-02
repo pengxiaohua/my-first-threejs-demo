@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
 import * as THREE from 'three'
 import { OrbitControls, useAnimations, useGLTF, Loader } from '@react-three/drei'
+import { Physics } from '@react-three/cannon'
 
 import SkyBox from './components/SkyBox'
 import Ground from './components/Ground'
@@ -35,8 +36,11 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <ambientLight intensity={0.5} />
       {/* <OrbitControls makeDefault /> */}
       <SkyBox />
-      <Ground />
-      <Ship />
+      {/* 使用Physics包裹，增加物理特性 */}
+      <Physics>
+        <Ground />
+        <Ship />
+      </Physics>
     </Canvas>
     {/* 初始化进度条 */}
     <Loader />
