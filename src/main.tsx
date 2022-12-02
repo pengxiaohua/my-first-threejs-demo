@@ -8,6 +8,7 @@ import { Physics } from '@react-three/cannon'
 import SkyBox from './components/SkyBox'
 import Ground from './components/Ground'
 import Ship from './components/Ship'
+import Cubes from './components/Cubes'
 import './index.css'
 
 
@@ -39,6 +40,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       {/* 使用Physics包裹，增加物理特性 */}
       <Physics>
         <Ground />
+        <Cubes />
         <Ship />
       </Physics>
     </Canvas>
