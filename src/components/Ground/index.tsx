@@ -40,8 +40,8 @@ const Plane = ({ position } : IPlaneProps) => {
 const Ground = () => {
     return (
         <>
-            <Plane position={[0, 0, -planeSize / 2]} />
-            <Plane position={[0, 0, -planeSize - planeSize / 2]} />
+            <Plane position={[0, -10, -planeSize / 2]} />
+            {/* <Plane position={[0, 0, -planeSize - planeSize / 2]} /> */}
         </>
     )
 }
