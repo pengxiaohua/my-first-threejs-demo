@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import { useTexture } from '@react-three/drei'
 import { usePlane, Triplet } from '@react-three/cannon'
 
-import { planeSize, planeTextureSize } from "../../constant"
+import { cubeSize, planeSize, planeTextureSize } from "../../constant"
 
 interface IPlaneProps {
     position: Triplet
@@ -40,7 +40,7 @@ const Plane = ({ position } : IPlaneProps) => {
 const Ground = () => {
     return (
         <>
-            <Plane position={[0, -10, -planeSize / 2]} />
+            <Plane position={[0, -cubeSize / 2, -planeSize / 2]} />
             {/* <Plane position={[0, 0, -planeSize - planeSize / 2]} /> */}
         </>
     )
