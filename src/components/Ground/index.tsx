@@ -25,8 +25,9 @@ const Plane = ({ position } : IPlaneProps) => {
 
     return (
         <mesh ref={planeRef}>
-            <planeBufferGeometry args={[planeSize, planeSize]} />
+            <planeBufferGeometry args={[planeSize, planeSize]} attach="geometry" />
             <meshStandardMaterial
+                attach="material"
                 emissive={0xffffff}
                 roughness={0}
                 metalness={0}
@@ -40,7 +41,7 @@ const Plane = ({ position } : IPlaneProps) => {
 const Ground = () => {
     return (
         <>
-            <Plane position={[0, -cubeSize / 2, -planeSize / 2]} />
+            <Plane position={[0, 0, -planeSize / 2]} />
             {/* <Plane position={[0, 0, -planeSize - planeSize / 2]} /> */}
         </>
     )
