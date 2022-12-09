@@ -5,14 +5,15 @@ import { shipFlySpeed } from './constant'
 
 interface IShipStore {
     shipPosition: Triplet,
-    moveShip: () => void
+    moveShip: (moveDistance?: Triplet) => void
 }
 
 export const useStore = create<IShipStore>((set, get) => ({
     shipPosition: [0, 3, -20],
-    moveShip: () =>  {
-        const [x, y, z] = get().shipPosition
+    // 解构 moveDistance 偏移量得出：moveX, moveY, moveZ
+    moveShip: ([moveX, moveY, moveZ] = [0, 0, 0]) =>  {
+        const [preX, preY, preZ] = get().shipPosition
 
-        set({ shipPosition: [x, y, z - shipFlySpeed] })
+        set({ shipPosition: [preX + moveX, preY + moveY, preZ - shipFlySpeed - moveZ] })
     }
 }))

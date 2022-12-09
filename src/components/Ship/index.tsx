@@ -21,7 +21,7 @@ const ShipModel = forwardRef<IShipModelRef>((props, ref) => {
         position: shipPosition,
         // 不用重力
         mass: 0
-    }), useRef(), [ shipPosition ])
+    }), useRef(null), [ shipPosition ])
 
     const { actions, names } = useAnimations(animations, group)
 
