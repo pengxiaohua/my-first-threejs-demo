@@ -1,6 +1,6 @@
 import { PerspectiveCamera, useAnimations, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { Suspense, useEffect, useRef, useImperativeHandle, forwardRef } from "react";
+import { Suspense, useEffect, useRef, useImperativeHandle, forwardRef, useState } from "react";
 import * as THREE from 'three'
 import { useBox } from "@react-three/cannon";
 
@@ -32,8 +32,34 @@ const ShipModel = forwardRef<IShipModelRef>((props, ref) => {
 
     useImperativeHandle(ref, () => ({ shipModel: group }))
 
+    // 键盘事件
+    const [left, setLeft] = useState(false)
+    const [right, setRight] = useState(false)
+
+    useEffect(() => {
+        // 设置点击事件
+        const eventHandle = ({ key }: KeyboardEvent, isDown: boolean) => {
+            key === 'a' && setLeft(isDown)
+            key === 'd' && setRight(isDown)
+        }
+
+        const upEvent = (e: KeyboardEvent) => eventHandle(e, false)
+        const downEvent = (e: KeyboardEvent) => eventHandle(e, true)
+
+        window.addEventListener('keyup', upEvent)
+        window.addEventListener('keydown', downEvent)
+
+        // 清空点击事件
+        return () => {
+            window.removeEventListener('keyup', upEvent)
+            window.removeEventListener('keydown', downEvent)
+        }
+    }, [])
+
     useFrame(() => {
-        moveShip()
+        // 按下向左或者向右的按键，时候，发生偏移 -0.5 或者 0.5
+        const moveX = left ? -0.5 : (right ? 0.5 : 0)
+        moveShip([moveX, 0, 0])
         // group.current?.position.set(0, 3, group.current?.position.z - shipFlySpeed)
     })
 
