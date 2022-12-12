@@ -37,7 +37,7 @@ const ShipModel = forwardRef<IShipModelRef>((props, ref) => {
     const [right, setRight] = useState(false)
 
     useEffect(() => {
-        // 设置点击事件
+        // 设置点击事件，a是左，d是右
         const eventHandle = ({ key }: KeyboardEvent, isDown: boolean) => {
             key === 'a' && setLeft(isDown)
             key === 'd' && setRight(isDown)
