@@ -35,7 +35,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Canvas shadows>
       <ambientLight intensity={0.5} />
-      {/* <OrbitControls makeDefault /> */}
       <SkyBox />
       {/* 使用Physics包裹，增加地面、方块和飞船的物理特性 */}
       <Physics>

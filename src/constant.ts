@@ -1,6 +1,6 @@
 // 地面尺寸
 export const planeSize = 1000
-
+// 图案尺寸
 export const planeTextureSize = planeSize / 20
 // 飞船飞行速度
 export const shipFlySpeed = 0.05
