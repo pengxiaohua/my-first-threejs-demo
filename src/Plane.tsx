@@ -21,7 +21,7 @@ const Plane = () => {
             rotation={euler}
             position={position}
         >
-            {/* 设置2D水平面及其尺寸 */}
+            {/* 设置 2D 水平面及其尺寸 */}
             <planeGeometry args={[10, 20]} />
             <meshStandardMaterial color={0xffffff} />
         </mesh>
