@@ -11,6 +11,7 @@ const Cubes = () => {
     // 设置Box尺寸
     const boxSize: Triplet = [cubeSize, cubeSize, cubeSize]
 
+    // 设置Box的位置
     const [boxRef] = useBox<THREE.InstancedMesh>(() => ({
         position: [radomInRange(-200, 200), 10, radomInRange(200, 1000)],
         mass: 1,
