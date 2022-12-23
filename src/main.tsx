@@ -12,7 +12,7 @@ import Cubes from './components/Cubes'
 import './index.css'
 
 
-// 机器人模型
+// 机器人模型 Model
 const Model = () => {
   const robotRef = useRef<THREE.Group>(null)
   // 加载模型
