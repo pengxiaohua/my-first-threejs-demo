@@ -11,26 +11,6 @@ import Ship from './components/Ship'
 import Cubes from './components/Cubes'
 import './index.css'
 
-
-// 机器人模型 Model
-const Model = () => {
-  const robotRef = useRef<THREE.Group>(null)
-  // 加载模型
-  const { scene, animations } = useGLTF('/public/robot/scene.gltf')
-  // 播放模型动画
-  const { actions, names } = useAnimations(animations, robotRef)
-
-  useEffect(() => {
-    actions[names[0]]?.play()
-  }, [])
-
-  return (
-    <group>
-      <primitive object={scene} ref={robotRef} />
-    </group>
-  )
-}
-
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Canvas shadows>
