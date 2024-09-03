@@ -39,12 +39,16 @@ Overview of the main features of the project:
 
 2. Install
 
-```bash
-  npm install
-```
+   ```bash
+     npm install
+   ```
 
 3. Run
 
-```bash
-  npm run dev
-```
+   ```bash
+     npm run dev
+   ```
+
+4. Play
+
+   Use the A and D keys on your keyboard to move the ship.
