@@ -51,4 +51,4 @@ Overview of the main features of the project:
 
 4. Play
 
-   Use the A and D keys on your keyboard to move the ship.
+   Use the `A` and `D` keys on your keyboard to move the ship.
