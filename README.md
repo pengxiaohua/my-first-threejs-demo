@@ -4,6 +4,8 @@
 
 A simple game like star war.
 
+3D Models from [https://sketchfab.com](https://sketchfab.com/3d-models?date=week&features=downloadable&sort_by=-likeCount)
+
 ## Technology Stack
 
 This project utilizes the following technologies:
@@ -18,14 +20,6 @@ This project utilizes the following technologies:
 ## Demo
 
 ![Project Demo](https://github.com/pengxiaohua/my-first-threejs-demo/blob/main/src/assets/demo.gif)
-
-## Features
-
-Overview of the main features of the project:
-
-- **Feature 1**: Description of the feature
-- **Feature 2**: Description of the feature
-- **Feature 3**: Description of the feature
 
 ## Installation and Running
 
